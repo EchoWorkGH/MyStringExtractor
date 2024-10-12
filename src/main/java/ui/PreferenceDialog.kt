@@ -17,11 +17,13 @@ import utils.Utils.getKotlinFile
 import utils.Utils.getStringXMLFiles
 import javax.swing.*
 
+var theRemov=""
 class PreferenceDialog(project: Project, closeDialogListener: CloseDialogListener) : DialogWrapper(project) {
     var jpanel: JPanel? = null
     var infoLable: JLabel? = null
     var prefixTextField: JTextField? = null
     var applicationClassTextField: JTextField? = null
+    var remove: JTextField? = null
     var submitButton: JButton? = null
     var hardCodedStringTableDialog: JFrame? = null
 
@@ -35,10 +37,10 @@ class PreferenceDialog(project: Project, closeDialogListener: CloseDialogListene
         submitButton?.addActionListener {
             val prefix = prefixTextField?.text?.trim()
             val baseApplicationClassName = applicationClassTextField?.text?.trim() ?: ""
-
+            theRemov  = remove?.text?.trim()?:""
             if (prefix.isNullOrBlank()) {
                 infoLable?.text = Constants.LABELS.EMPTY_PREFIX_FIELD
-            } else if (prefix.isNullOrBlank()) {
+            } else if (baseApplicationClassName.isBlank()) {
                 infoLable?.text = Constants.LABELS.INVALID_APPLICATION_NAME_FIELD
             } else {
                 val javaVirtualFile = getJavaFile(baseApplicationClassName, project)

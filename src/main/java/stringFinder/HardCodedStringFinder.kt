@@ -15,7 +15,7 @@ abstract class HardCodedStringFinder {
 
         return result
                 .map { extractHardCodedString(it.value) }
-                .filter { shouldInclude(it) }
+                .filter { shouldInclude(it)  }
                 .toList()
 
     }

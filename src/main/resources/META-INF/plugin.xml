@@ -42,7 +42,7 @@
 
             <action id="StringExtractor"
                     class="StringExtractor"
-                    text="Extract string resources"
+                    text="Extract string resources 3"
                     description="Helps extracting hardcoded string resources"/>
         </group>
 
